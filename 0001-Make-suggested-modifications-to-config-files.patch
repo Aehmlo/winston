@@ -1,0 +1,71 @@
+From 06a4accf949adfdd9260e259cf3812c7fd95907b Mon Sep 17 00:00:00 2001
+From: Alex Hamilton <alex.hamilton@ou.edu>
+Date: Wed, 28 Nov 2018 16:54:23 -0600
+Subject: [PATCH] Make suggested modifications to config files.
+
+This will reduce the burden on us to do it after installation. Note that
+the training file *cannot* be set by us in advance (as it has a
+timestamp in it), so we'll still have to do that.
+
+See http://blog.jfrey.info/2015/02/04/openbci-p300-coadapt/ for more
+information.
+---
+ .../applications/CoAdaptP300Stimulator/P300AcquisitionConfig.conf   | 6 +++---
+ .../applications/CoAdaptP300Stimulator/interface-properties.xml     | 2 +-
+ .../bci-examples/p300-coadapt-stimulator/p300-spatial-filter.cfg    | 4 ++--
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/contrib/applications/platform/P300Stimulator/share/applications/CoAdaptP300Stimulator/P300AcquisitionConfig.conf b/contrib/applications/platform/P300Stimulator/share/applications/CoAdaptP300Stimulator/P300AcquisitionConfig.conf
+index 6fd2c9f6a..c50d9fd99 100644
+--- a/contrib/applications/platform/P300Stimulator/share/applications/CoAdaptP300Stimulator/P300AcquisitionConfig.conf
++++ b/contrib/applications/platform/P300Stimulator/share/applications/CoAdaptP300Stimulator/P300AcquisitionConfig.conf
+@@ -3,10 +3,10 @@
+ #####################################################################################
+ CoAdaptP300_SubjectName=x1
+ #target word for Calibration and copy mode, nothing for free mode
+-CoAdaptP300_WordToSpell=TARGET
++CoAdaptP300_WordToSpell=SPHINX OF BLACK QUARTZ JUDGE MY VOW
+ CoAdaptP300_TrainFile=PLEASE_REMEMBER_TO_MODIFY_P300AcquisitionConfig.conf
+ #we recommand to use these channels
+-CoAdaptP300_Channels=Fz;C3;Cz;C4;P7;P3;Pz;P4;P8;O1;Oz;O2
++CoAdaptP300_Channels=C3;Cz;C4;P3;Pz;P4;O1;O2
+ CoAdaptP300_paramFile=p300
+ 
+ #####################################################################################
+@@ -32,7 +32,7 @@ CoAdaptP300_StimulatorMode=Online
+ # number of repetition per trial (letter)
+ #if early stopping is enabled, this is the maximum number of repetition before a prediction is forced
+ # do not set it to less than 3 (it will be ignored and set to 3)
+-CoAdaptP300_NrOfRepetitions=4
++CoAdaptP300_NrOfRepetitions=15
+ 
+ #####################################################################################
+ # Accumulation settings
+diff --git a/contrib/applications/platform/P300Stimulator/share/applications/CoAdaptP300Stimulator/interface-properties.xml b/contrib/applications/platform/P300Stimulator/share/applications/CoAdaptP300Stimulator/interface-properties.xml
+index c3d772c23..ddaeb8e9b 100644
+--- a/contrib/applications/platform/P300Stimulator/share/applications/CoAdaptP300Stimulator/interface-properties.xml
++++ b/contrib/applications/platform/P300Stimulator/share/applications/CoAdaptP300Stimulator/interface-properties.xml
+@@ -13,7 +13,7 @@
+ 	<!-- The name of the database used by Presage for word prediction -->
+ 	<NGramDatabase>openvibe/applications/CoAdaptP300Stimulator/fr.db</NGramDatabase>
+ 	<!-- width and height of the window, full screen or nofull screen-->
+-	<Screen index="${CoAdaptP300_MonitorIndex}" width="${CoAdaptP300_MonitorWidth}" height="${CoAdaptP300_MonitorHeight}">nofull</Screen>
++	<Screen index="${CoAdaptP300_MonitorIndex}" width="${CoAdaptP300_MonitorWidth}" height="${CoAdaptP300_MonitorHeight}">full</Screen>
+ 	<!-- riprand or rowcol -->
+ 	<FlashMode>${CoAdaptP300_FlashMode}</FlashMode>
+ 	<!-- specifies where the feedback is presented in free mode -->
+diff --git a/contrib/applications/platform/P300Stimulator/share/scenarios/bci-examples/p300-coadapt-stimulator/p300-spatial-filter.cfg b/contrib/applications/platform/P300Stimulator/share/scenarios/bci-examples/p300-coadapt-stimulator/p300-spatial-filter.cfg
+index 022d07dd2..97f8be247 100644
+--- a/contrib/applications/platform/P300Stimulator/share/scenarios/bci-examples/p300-coadapt-stimulator/p300-spatial-filter.cfg
++++ b/contrib/applications/platform/P300Stimulator/share/scenarios/bci-examples/p300-coadapt-stimulator/p300-spatial-filter.cfg
+@@ -1,5 +1,5 @@
+ <OpenViBE-SettingsOverride>
+-	<SettingValue>2.384245e-01 2.260943e-01 2.268318e-01 3.309153e-01 2.795355e-01 2.627023e-01 3.228496e-01 9.852543e-02 1.482256e-01 -3.524040e-02 6.435973e-01 1.804319e-01 2.537012e-01 2.468159e-01 2.629077e-01 2.786330e-01 4.900368e-01 1.065575e-01 4.789083e-01 3.552275e-01 1.476976e-01 2.079049e-01 2.034797e-01 1.203640e-01 -2.153776e-01 -1.381194e-01 -3.000775e-02 -6.408805e-02 -2.449493e-01 -5.788463e-02 -1.352440e-01 -4.275292e-01 -1.576975e-01 1.722851e-02 -7.112808e-01 3.660863e-01 </SettingValue>
++	<SettingValue>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </SettingValue>
+ 	<SettingValue>3</SettingValue>
+-	<SettingValue>12</SettingValue>
++	<SettingValue>8</SettingValue>
+ </OpenViBE-SettingsOverride>
+-- 
+2.13.2
+
