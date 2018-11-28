@@ -1,0 +1,6 @@
+[submodule "openbci"]
+	path = openbci
+	url = https://github.com/jfrey-xx/OpenBCI_Python.git
+[submodule "openvibe"]
+	path = openvibe
+	url = https://gitlab.inria.fr/openvibe/extras.git
